@@ -28,7 +28,7 @@ def test_fixture_path(
 
 
         def test_{fixture_name}({fixture_name}: Path) -> None:
-            assert {fixture_name}.name.startswith("{expected_name}")
+            assert {fixture_name}.name.startswith({expected_name!r})
         """
     )
     result: RunResult = pytester.runpytest(fixture_test)
