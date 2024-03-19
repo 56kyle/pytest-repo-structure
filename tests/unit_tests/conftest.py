@@ -24,5 +24,9 @@ def conftest_source(request: FixtureRequest, conftest_source_path: Path) -> str:
 
 
 @pytest.fixture(scope="function")
-def conftest_source_path(request: FixtureRequest, data_folder: Path) -> Path:
-    return getattr(request, "param", data_folder / "example_conftest.py")
+def conftest_source_path(request: FixtureRequest) -> Path:
+    return getattr(
+        request,
+        "param",
+        Path(request.config.rootpath) / "tests" / "data" / "example_conftest.py",
+    )
