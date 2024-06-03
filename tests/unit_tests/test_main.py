@@ -16,3 +16,9 @@ def test_main_succeeds(runner: CliRunner) -> None:
     """It exits with a status code of zero."""
     result = runner.invoke(__main__.main)
     assert result.exit_code == 0
+
+
+def test_main_version(runner: CliRunner) -> None:
+    result = runner.invoke(__main__.main, args=["--version"])
+    assert result.exit_code == 0
+    assert "version" in result.stdout
