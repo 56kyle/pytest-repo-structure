@@ -1,4 +1,5 @@
 """Pytest hook specifications."""
+# type: ignore
 
 from pathlib import Path
 
