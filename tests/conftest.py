@@ -1,3 +1,3 @@
 """Fixtures used in all tests."""
 
-pytest_plugins = ["pytester"]
+pytest_plugins: list[str] = ["pytester", "pytest_repo_structure.plugin"]

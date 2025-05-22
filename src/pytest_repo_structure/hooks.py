@@ -3,7 +3,6 @@
 from pathlib import Path
 
 from _pytest.config import hookspec
-from _pytest.fixtures import FixtureRequest
 
 
 @hookspec(firstresult=True)
@@ -32,10 +31,15 @@ def pytest_acceptance_tests_folder() -> Path:
 
 
 @hookspec(firstresult=True)
+def pytest_plugin_tests_folder() -> Path:
+    """Returns the folder containing plugin tests."""
+
+
+@hookspec(firstresult=True)
 def pytest_data_folder() -> Path:
     """Returns the folder containing test data."""
 
 
 @hookspec(firstresult=True)
-def pytest_configs_folder() -> Path:
+def pytest_config_folder() -> Path:
     """Returns the folder containing test configs."""

@@ -43,7 +43,7 @@ myst-parser = {version = ">=0.16.1"}
 ruff = "^0.11.5"
 pip-audit = "^2.9.0"
 
-[tool.poetry.plugins.pytest11]
+[tool.poetry.plugins."pytest11"]
 pytest_repo_structure = "pytest_repo_structure.plugin"
 
 [tool.poetry.scripts]
@@ -51,6 +51,7 @@ pytest-repo-structure = "pytest_repo_structure.__main__:main"
 
 [tool.pytest.ini_options]
 pythonpath = "src"
+pytester_example_dir = "./tests/plugin_tests"
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]
