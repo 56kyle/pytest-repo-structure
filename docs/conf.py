@@ -2,7 +2,7 @@
 
 project = "Pytest Repo Structure"
 author = "Kyle Oliver"
-copyright = "2024, Kyle Oliver"
+copyright = "2024, Kyle Oliver"  # noqa: A001
 extensions = [
     "sphinx.ext.autodoc",
     "sphinx.ext.napoleon",
