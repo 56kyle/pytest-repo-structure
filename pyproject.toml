@@ -42,6 +42,7 @@ myst-parser = {version = ">=0.16.1"}
 [tool.poetry.group.dev.dependencies]
 ruff = "^0.11.5"
 pip-audit = "^2.9.0"
+pytest-cov = "^6.1.1"
 
 [tool.poetry.plugins."pytest11"]
 pytest_repo_structure = "pytest_repo_structure.plugin"
@@ -53,6 +54,7 @@ pytest-repo-structure = "pytest_repo_structure.__main__:main"
 pythonpath = "src"
 pytester_example_dir = "./tests/plugin_tests"
 norecursedirs = "tests/plugin_tests"
+addopts = ["--cov", "--cov-report=term-missing"]
 
 [build-system]
 requires = ["poetry-core>=1.0.0"]

@@ -152,9 +152,12 @@ def mypy(session: Session) -> None:
 def tests(session: Session) -> None:
     """Run the test suite."""
     session.install(".")
-    session.install("coverage", "pytest", "pygments")
+    session.install("pytest", "pytest-cov", "pygments")
+    session.env["COV_CORE_SOURCE"] = "src"
+    session.env["COV_CORE_CONFIG"] = ".coveragerc"
+    session.env["COV_CORE_DATAFILE"] = ".coverage.eager"
     try:
-        session.run("coverage", "run", "--parallel", "-m", "pytest", *session.posargs)
+        session.run("pytest", "--cov=src", "--trace-config", *session.posargs)
     finally:
         if session.interactive:
             session.notify("coverage", posargs=[])
