@@ -1,115 +1,214 @@
-# Contributor Guide
+# Contributing to pytest-repo-structure
 
-Thank you for your interest in improving this project.
-This project is open-source under the [MIT license] and
-welcomes contributions in the form of bug reports, feature requests, and pull requests.
+Thank you for your interest in contributing to `pytest_repo_structure`! We welcome bug reports, feature requests, and code contributions that help improve this project.
 
-Here is a list of important resources for contributors:
+By participating in this project, you are expected to uphold our [Code of Conduct][code-of-conduct].
 
-- [Source Code]
-- [Documentation]
-- [Issue Tracker]
-- [Code of Conduct]
+## How to Contribute
 
-[mit license]: https://opensource.org/licenses/MIT
-[source code]: https://github.com/56kyle/pytest-repo-structure
-[documentation]: https://pytest-repo-structure.readthedocs.io/
-[issue tracker]: https://github.com/56kyle/pytest-repo-structure/issues
+### Reporting Bugs
 
-## How to report a bug
+If you find a bug, please open an issue on our [issue tracker][issues] with:
 
-Report bugs on the [Issue Tracker].
+- A clear description of the bug
+- Steps to reproduce the issue
+- Expected vs. actual behavior
+- Your environment details (Python version, OS, etc.)
+- Relevant error messages or logs
 
-When filing an issue, make sure to answer these questions:
+### Suggesting Features
 
-- Which operating system and Python version are you using?
-- Which version of this project are you using?
-- What did you do?
-- What did you expect to see?
-- What did you see instead?
+For feature requests, please open an issue with:
 
-The best way to get your bug fixed is to provide a test case,
-and/or steps to reproduce the issue.
+- A clear description of the proposed feature
+- The problem it would solve or use case it would address
+- Any relevant examples or mockups
+- Consideration of potential alternatives
 
-## How to request a feature
+### Contributing Code
 
-Request features on the [Issue Tracker].
+We welcome pull requests! For significant changes, it's best to open an issue first to discuss the approach.
 
-## How to set up your development environment
+## Development Setup
 
-You need Python 3.9+ and the following tools:
+### Prerequisites
 
-- [Poetry]
-- [Nox]
-- [nox-poetry]
+- Python 3.10+ (this project supports Python 3.10-3.14)
+- [uv][uv-documentation] for dependency management
+- Git for version control
 
-Install the package with development requirements:
+### Setting Up Your Development Environment
 
-```console
-$ poetry install
+1. **Fork and clone the repository:**
+
+   ```bash
+   git clone https://github.com/56kyle/pytest-repo-structure.git
+   cd pytest-repo-structure
+   ```
+
+2. **Install dependencies:**
+
+   ```bash
+   uv sync
+   ```
+
+3. **Set up pre-commit hooks:**
+
+   ```bash
+   uvx nox -s pre-commit -- install
+   ```
+
+4. **Verify your setup:**
+   ```bash
+   uvx nox -l  # List available development tasks
+   ```
+
+## Development Workflow
+
+### Making Changes
+
+1. **Create a feature branch:**
+
+   ```bash
+   git checkout -b feature/your-feature-name
+   # or
+   git checkout -b fix/your-bug-fix
+   ```
+
+2. **Make your changes** following our coding standards (see below)
+
+3. **Test your changes:**
+
+   ```bash
+   # Run the full test suite
+   uvx nox -s tests-python
+
+   # Run tests for a specific Python version
+   uvx nox -s tests-python-314
+
+   # Run a specific test file
+   uvx nox -s tests-python -- tests/unit_tests/test_specific.py
+   ```
+
+4. **Check code quality:**
+
+   ```bash
+   # Format code
+   uvx nox -s format-python
+
+   # Lint code
+   uvx nox -s lint-python
+
+   # Type check
+   uvx nox -s typecheck
+
+   # Security checks
+   uvx nox -s security-python
+
+   # Or run all checks at once
+   uvx nox -t ci
+   ```
+
+5. **Update documentation if needed:**
+   ```bash
+   # Build docs locally
+   uvx nox -s build-docs
+   ```
+
+### Coding Standards
+
+This project follows these standards:
+
+- **Code formatting:** [Ruff][ruff-documentation] (automatically applied by pre-commit)
+- **Linting:** Ruff with comprehensive rule set
+- **Type checking:** [Basedpyright][basedpyright-documentation]
+- **Security:** [Bandit][bandit-documentation] for security linting
+- **Commit messages:** [Conventional Commits][conventional-commits] format preferred
+- **Testing:** [pytest][pytest-documentation] with good coverage
+
+### Testing Guidelines
+
+- Write tests for new functionality in the appropriate test directory:
+  - `tests/unit_tests/` - Fast, isolated unit tests
+  - `tests/integration_tests/` - Tests that involve multiple components
+  - `tests/acceptance_tests/` - End-to-end behavior tests
+- Aim for good test coverage (check with `uvx nox -s coverage`)
+- Use descriptive test names and docstrings
+- Mock external dependencies appropriately
+
+## Submitting Changes
+
+### Pull Request Process
+
+1. **Push your branch** to your fork
+2. **Open a pull request** with:
+
+   - Clear title describing the change
+   - Description explaining what and why
+   - Link to any relevant issues
+   - Note any breaking changes
+
+3. **Ensure CI passes** - all automated checks must pass
+4. **Respond to review feedback** if requested
+5. **Squash commits** if requested before merge
+
+### Pull Request Guidelines
+
+- Keep changes focused and atomic
+- Update documentation for user-facing changes
+- Add tests for new functionality
+- Follow the existing code style
+- Ensure all CI checks pass
+
+## Development Tasks Reference
+
+Common Nox sessions for development:
+
+```bash
+# Code quality
+uvx nox -s format-python    # Format with Ruff
+uvx nox -s lint-python      # Lint with Ruff
+uvx nox -s typecheck        # Type check with Basedpyright
+uvx nox -s security-python  # Security checks
+
+# Testing
+uvx nox -s tests-python     # Run full test suite
+uvx nox -s coverage         # Generate coverage report
+
+# Documentation
+uvx nox -s build-docs       # Build documentation
+
+# Building
+uvx nox -s build-python     # Build package
+
+# Run everything CI runs
+uvx nox -t ci               # All CI checks
 ```
 
-You can now run an interactive Python session,
-or the command-line interface:
+## Getting Help
 
-```console
-$ poetry run python
-$ poetry run pytest-repo-structure
-```
+- Check existing [issues][issues] and [discussions][discussions]
+- Open a new issue for bugs or feature requests
+- Start a discussion for questions or ideas
 
-[poetry]: https://python-poetry.org/
-[nox]: https://nox.thea.codes/
-[nox-poetry]: https://nox-poetry.readthedocs.io/
+## Recognition
 
-## How to test the project
+Contributors will be recognized in our release notes and documentation. Thank you for helping make this project better!
 
-Run the full test suite:
+---
 
-```console
-$ nox
-```
+_This project was generated from the [cookiecutter-robust-python][cookiecutter-robust-python] template._
 
-List the available Nox sessions:
+<!-- Reference Links -->
 
-```console
-$ nox --list-sessions
-```
-
-You can also run a specific Nox session.
-For example, invoke the unit test suite like this:
-
-```console
-$ nox --session=tests
-```
-
-Unit tests are located in the _tests_ directory,
-and are written using the [pytest] testing framework.
-
-[pytest]: https://pytest.readthedocs.io/
-
-## How to submit changes
-
-Open a [pull request] to submit changes to this project.
-
-Your pull request needs to meet the following guidelines for acceptance:
-
-- The Nox test suite must pass without errors and warnings.
-- Include unit tests. This project maintains 100% code coverage.
-- If your changes add functionality, update the documentation accordingly.
-
-Feel free to submit early, though—we can always iterate on this.
-
-To run linting and code formatting checks before committing your change, you can install pre-commit as a Git hook by running the following command:
-
-```console
-$ nox --session=pre-commit -- install
-```
-
-It is recommended to open an issue before starting work on anything.
-This will allow a chance to talk it over with the owners and validate your approach.
-
-[pull request]: https://github.com/56kyle/pytest-repo-structure/pulls
-
-<!-- github-only -->
-
-[code of conduct]: CODE_OF_CONDUCT.md
+[code-of-conduct]: CODE_OF_CONDUCT.md
+[issues]: https://github.com/56kyle/pytest-repo-structure/issues
+[discussions]: https://github.com/56kyle/pytest-repo-structure/discussions
+[uv-documentation]: https://docs.astral.sh/uv/
+[ruff-documentation]: https://docs.astral.sh/ruff/
+[basedpyright-documentation]: https://github.com/detachhead/basedpyright
+[pyright-documentation]: https://github.com/microsoft/pyright
+[bandit-documentation]: https://bandit.readthedocs.io/
+[conventional-commits]: https://www.conventionalcommits.org/
+[pytest-documentation]: https://docs.pytest.org/
+[cookiecutter-robust-python]: https://github.com/robust-python/cookiecutter-robust-python

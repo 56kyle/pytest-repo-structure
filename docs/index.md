@@ -1,7 +1,5 @@
 ```{include} ../README.md
----
-end-before: <!-- github-only -->
----
+
 ```
 
 [license]: license
@@ -19,5 +17,5 @@ reference
 contributing
 Code of Conduct <codeofconduct>
 License <license>
-Changelog <https://github.com/56kyle/pytest-repo-structure/releases>
+Changelog <changelog>
 ```
