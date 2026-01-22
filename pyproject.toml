@@ -21,7 +21,8 @@ classifiers = [
     "Programming Language :: Python :: 3.12",
     "Programming Language :: Python :: 3.13",
     "Programming Language :: Python :: 3.14",
-    "Development Status :: 1 - Planning"
+    "Development Status :: 1 - Planning",
+    "Framework :: Pytest",
 ]
 dependencies = [
     "loguru>=0.7.3",
@@ -53,6 +54,9 @@ docs = [
     "sphinx-tabs>=3.4.7",
     "sphinxcontrib-typer>=0.5.1",
 ]
+
+[project.entry-points.pytest11]
+pytest-repo-structure = "pytest_repo_structure.plugin"
 
 [project.urls]
 Homepage = "https://github.com/56kyle/pytest-repo-structure"
