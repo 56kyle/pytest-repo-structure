@@ -1,1 +1,1 @@
-pytest_plugins: list[str] = ["pytest_repo_structure"]
+pytest_plugins: list[str] = ["pytest-repo-structure"]
