@@ -2,12 +2,10 @@
 
 from __future__ import annotations
 
-from pathlib import Path
+from typing import TYPE_CHECKING
 from typing import Optional
 
 import pytest
-from _pytest.config import PytestPluginManager
-from _pytest.fixtures import FixtureRequest
 
 from pytest_repo_structure.constants import DEFAULT_ACCEPTANCE_TESTS_FOLDER_NAME
 from pytest_repo_structure.constants import DEFAULT_CONFIG_FOLDER_NAME
@@ -16,6 +14,13 @@ from pytest_repo_structure.constants import DEFAULT_INTEGRATION_TESTS_FOLDER_NAM
 from pytest_repo_structure.constants import DEFAULT_PLUGIN_TESTS_FOLDER_NAME
 from pytest_repo_structure.constants import DEFAULT_TESTS_FOLDER_NAME
 from pytest_repo_structure.constants import DEFAULT_UNIT_TESTS_FOLDER_NAME
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
+
+    from _pytest.config import PytestPluginManager
+    from _pytest.fixtures import FixtureRequest
 
 
 def pytest_addhooks(pluginmanager: PytestPluginManager) -> None:

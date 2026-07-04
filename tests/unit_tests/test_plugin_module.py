@@ -22,8 +22,6 @@ from pytest_repo_structure.plugin import unit_tests_folder
         data_folder,
         integration_tests_folder,
         plugin_tests_folder,
-        repository_root,
-        tests_folder,
         unit_tests_folder,
     ],
 )

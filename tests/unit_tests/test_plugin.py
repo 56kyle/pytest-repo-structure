@@ -1,7 +1,11 @@
-from pathlib import Path
+from typing import TYPE_CHECKING
 
 from _pytest.pytester import Pytester
 from _pytest.pytester import RunResult
+
+
+if TYPE_CHECKING:
+    from pathlib import Path
 
 
 def test_plugin_registration(pytester: Pytester) -> None:
