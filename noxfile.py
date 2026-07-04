@@ -127,15 +127,19 @@ def tests_python(session: Session) -> None:
     test_results_dir.mkdir(parents=True, exist_ok=True)
     junitxml_file = test_results_dir / f"test-results-py{session.python.replace('.', '')}.xml"
 
+    # Start coverage before pytest so the plugin's import-time code is measured;
+    # a bare `pytest --cov` cannot see it (this package loads as a pytest plugin
+    # during bootstrap, before pytest-cov's tracer starts).
     session.run(
+        "coverage",
+        "run",
+        "-m",
         "pytest",
-        "--cov={}".format(PACKAGE_NAME),
-        "--cov-append",
-        "--cov-report=term",
-        "--cov-report=xml",
         f"--junitxml={junitxml_file}",
         "tests/",
     )
+    session.run("coverage", "report")
+    session.run("coverage", "xml")
 
 
 @nox.session(python=DEFAULT_PYTHON_VERSION, name="build-docs", tags=[DOCS, BUILD])
