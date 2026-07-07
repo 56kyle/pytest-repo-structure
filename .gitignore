@@ -75,3 +75,5 @@ node_modules/
 
 # Release Notes
 body.md
+
+tests/results/
