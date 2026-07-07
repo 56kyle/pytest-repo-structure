@@ -1,11 +1,25 @@
-from typing import TYPE_CHECKING
+from pathlib import Path
 
+import pytest
 from _pytest.pytester import Pytester
 from _pytest.pytester import RunResult
 
+from pytest_repo_structure.plugin import __choose_default_fixture_path
 
-if TYPE_CHECKING:
-    from pathlib import Path
+
+def test___choose_default_fixture_path_with_no_hook_path(tmp_path: Path) -> None:
+    assert __choose_default_fixture_path(hook_path=None, config_path=tmp_path) == tmp_path
+
+
+def test___choose_default_fixture_path_with_hook_path(tmp_path: Path) -> None:
+    path_a: Path = tmp_path / "a"
+    path_b: Path = tmp_path / "b"
+    assert __choose_default_fixture_path(hook_path=path_a, config_path=path_b) == path_a
+
+
+def test___choose_default_fixture_path_with_invalid_hook_path(tmp_path: Path) -> None:
+    with pytest.raises(ValueError):
+        __choose_default_fixture_path(hook_path=2, config_path=tmp_path)
 
 
 def test_plugin_registration(pytester: Pytester) -> None:

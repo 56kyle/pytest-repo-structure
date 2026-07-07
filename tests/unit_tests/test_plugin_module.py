@@ -25,5 +25,5 @@ from pytest_repo_structure.plugin import unit_tests_folder
         unit_tests_folder,
     ],
 )
-def test_plugin_module_fixtures(fixture: Any) -> None:
+def test_plugin_module_fixtures(fixture: Any) -> None:  # pyright: ignore[reportAny, reportExplicitAny]
     assert fixture is not None
