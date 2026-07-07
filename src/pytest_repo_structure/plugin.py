@@ -24,9 +24,9 @@ if TYPE_CHECKING:
 
 def pytest_addhooks(pluginmanager: PytestPluginManager) -> None:
     """Pytest hook used for adding new hooks."""
-    from pytest_repo_structure import hooks
+    import pytest_repo_structure.hooks
 
-    pluginmanager.add_hookspecs(hooks)
+    pluginmanager.add_hookspecs(pytest_repo_structure.hooks)
 
 
 def __choose_default_fixture_path(hook_path: Any, config_path: Path) -> Path:  # pyright: ignore[reportAny, reportExplicitAny]

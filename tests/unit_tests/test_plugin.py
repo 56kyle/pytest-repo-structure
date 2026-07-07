@@ -18,7 +18,7 @@ def test___choose_default_fixture_path_with_hook_path(tmp_path: Path) -> None:
 
 
 def test___choose_default_fixture_path_with_invalid_hook_path(tmp_path: Path) -> None:
-    with pytest.raises(ValueError):
+    with pytest.raises(ValueError, match="Received non Path value"):
         __choose_default_fixture_path(hook_path=2, config_path=tmp_path)
 
 
