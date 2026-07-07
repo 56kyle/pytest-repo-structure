@@ -4,7 +4,7 @@ import pytest
 from _pytest.pytester import Pytester
 from _pytest.pytester import RunResult
 
-from pytest_repo_structure.plugin import __choose_default_fixture_path
+from pytest_repo_structure.plugin import __choose_default_fixture_path  # pyright: ignore[reportPrivateUsage]
 
 
 def test___choose_default_fixture_path_with_no_hook_path(tmp_path: Path) -> None:
