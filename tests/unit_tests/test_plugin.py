@@ -1,7 +1,25 @@
 from pathlib import Path
 
+import pytest
 from _pytest.pytester import Pytester
 from _pytest.pytester import RunResult
+
+from pytest_repo_structure.plugin import _choose_default_fixture_path  # pyright: ignore[reportPrivateUsage]
+
+
+def test__choose_default_fixture_path_with_no_hook_path(tmp_path: Path) -> None:
+    assert _choose_default_fixture_path(hook_path=None, config_path=tmp_path) == tmp_path
+
+
+def test__choose_default_fixture_path_with_hook_path(tmp_path: Path) -> None:
+    path_a: Path = tmp_path / "a"
+    path_b: Path = tmp_path / "b"
+    assert _choose_default_fixture_path(hook_path=path_a, config_path=path_b) == path_a
+
+
+def test__choose_default_fixture_path_with_invalid_hook_path(tmp_path: Path) -> None:
+    with pytest.raises(TypeError, match="Received non Path value"):
+        _choose_default_fixture_path(hook_path=2, config_path=tmp_path)
 
 
 def test_plugin_registration(pytester: Pytester) -> None:
