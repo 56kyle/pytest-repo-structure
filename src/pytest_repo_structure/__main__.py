@@ -1,13 +1,15 @@
 """Command-line interface."""
 
-import click
+import typer
 
 
-@click.command()
-@click.version_option()
+app: typer.Typer = typer.Typer()
+
+
+@app.command(name="pytest-repo-structure")
 def main() -> None:
     """Pytest Repo Structure."""
 
 
 if __name__ == "__main__":
-    main(prog_name="pytest-repo-structure")  # pragma: no cover
+    app()  # pragma: no cover

@@ -1,71 +1,95 @@
-# Pytest Repo Structure
+# pytest-repo-structure
 
-[![PyPI](https://img.shields.io/pypi/v/pytest-repo-structure.svg)][pypi status]
-[![Status](https://img.shields.io/pypi/status/pytest-repo-structure.svg)][pypi status]
-[![Python Version](https://img.shields.io/pypi/pyversions/pytest-repo-structure)][pypi status]
-[![License](https://img.shields.io/pypi/l/pytest-repo-structure)][license]
+pytest_repo_structure
 
-[![Read the documentation at https://pytest-repo-structure.readthedocs.io/](https://img.shields.io/readthedocs/pytest-repo-structure/latest.svg?label=Read%20the%20Docs)][read the docs]
-[![Tests](https://github.com/56kyle/pytest-repo-structure/workflows/Tests/badge.svg)][tests]
-[![Codecov](https://codecov.io/gh/56kyle/pytest-repo-structure/branch/main/graph/badge.svg)][codecov]
+---
 
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-brightgreen?logo=pre-commit&logoColor=white)][pre-commit]
-[![Black](https://img.shields.io/badge/code%20style-black-000000.svg)][black]
+**[📚 View Documentation](https://pytest-repo-structure.readthedocs.io/)** | **[🐛 Report a Bug](https://github.com/56kyle/pytest-repo-structure/issues)** | **[✨ Request a Feature](https://github.com/56kyle/pytest-repo-structure/issues)**
 
-[pypi status]: https://pypi.org/project/pytest-repo-structure/
-[read the docs]: https://pytest-repo-structure.readthedocs.io/
-[tests]: https://github.com/56kyle/pytest-repo-structure/actions?workflow=Tests
-[codecov]: https://app.codecov.io/gh/56kyle/pytest-repo-structure
-[pre-commit]: https://github.com/pre-commit/pre-commit
-[black]: https://github.com/psf/black
-
-## Features
-
-- TODO
-
-## Requirements
-
-- TODO
+---
 
 ## Installation
 
-You can install _Pytest Repo Structure_ via [pip] from [PyPI]:
+You can install `pytest_repo_structure` via [pip](pip-documentation) from PyPI:
 
-```console
-$ pip install pytest-repo-structure
+```bash
+pip install pytest_repo_structure
 ```
+
+### Installation for Development
+
+To set up `pytest_repo_structure` for local development:
+
+1.  Clone the repository:
+    ```bash
+    git clone https://github.com/56kyle/pytest-repo-structure.git
+    cd pytest-repo-structure
+    ```
+2.  Install dependencies using [:term:`uv`](uv-documentation):
+    ```bash
+    uv sync
+    ```
+3.  Install pre-commit hooks:
+    ```bash
+    uvx nox -s pre-commit -- install
+    ```
+
+This sets up a virtual environment and installs core, development, and quality check dependencies.
 
 ## Usage
 
-Please see the [Command-line Reference] for details.
+(This section should explain how to use the generated application. Replace the content below with instructions specific to your project's functionality. If your project is a library, show import examples. If it's a CLI application, show command examples. Link to the full documentation for details.)
+
+### As a Library
+
+```python
+# Example usage of your package as a library
+# from pytest_repo_structure import some_function
+# result = some_function()
+# print(result)
+```
+
+### As a Command-Line Application
+
+If your project defines command-line entry points in `pyproject.toml`:
+
+```bash
+# Example usage of your CLI application
+# pytest-repo-structure --help
+# pytest-repo-structure do-something --input file.txt
+```
+
+For detailed API documentation and CLI command references, see the **[Documentation][documentation]**.
+
+## Development Workflow
+
+This project uses a robust set of tools for development, testing, and quality assurance. All significant automated tasks are run via [:term:`Nox`](nox-documentation), orchestrated by the central `noxfile.py`.
+
+- **Run all checks (lint, typecheck, security):** `uvx nox -s check`
+- **Run test suite with coverage:** `uvx nox -s test`
+- **Build documentation:** `uvx nox -s docs`
+- **Build package:** `uvx nox -s build`
+- **See all available tasks:** `uvx nox -l`
+
+Explore the `noxfile.py` and the project documentation for detailed information on the automated workflow.
 
 ## Contributing
 
-Contributions are very welcome.
-To learn more, see the [Contributor Guide].
+(This section should guide contributions _to this specific generated project_, not the template. It should refer to the project's `CODE_OF_CONDUCT.md` and link to a `CONTRIBUTING.md` specific to the project, if you choose to generate one.)
+
+Report bugs or suggest features via the [issue tracker](https://github.com/56kyle/pytest-repo-structure/issues).
+
+See [CONTRIBUTING.md](#) for contribution guidelines.
 
 ## License
 
-Distributed under the terms of the [MIT license][license],
-_Pytest Repo Structure_ is free and open source software.
+Distributed under the terms of the **MIT** license. See [LICENSE](LICENSE) for details.
 
-## Issues
+---
 
-If you encounter any problems,
-please [file an issue] along with a detailed description.
+**This project was generated from the [cookiecutter-robust-python template][cookiecutter-robust-python].**
 
-## Credits
+<!-- Reference Links -->
 
-This project was generated from [@cjolowicz]'s [Hypermodern Python Cookiecutter] template.
-
-[@cjolowicz]: https://github.com/cjolowicz
-[pypi]: https://pypi.org/
-[hypermodern python cookiecutter]: https://github.com/cjolowicz/cookiecutter-hypermodern-python
-[file an issue]: https://github.com/56kyle/pytest-repo-structure/issues
-[pip]: https://pip.pypa.io/
-
-<!-- github-only -->
-
-[license]: https://github.com/56kyle/pytest-repo-structure/blob/main/LICENSE
-[contributor guide]: https://github.com/56kyle/pytest-repo-structure/blob/main/CONTRIBUTING.md
-[command-line reference]: https://pytest-repo-structure.readthedocs.io/en/latest/usage.html
+[cookiecutter-robust-python]: https://github.com/robust-python/cookiecutter-robust-python
+[documentation]: https://pytest-repo-structure.readthedocs.io/

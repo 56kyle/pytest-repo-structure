@@ -1,6 +1,5 @@
 """Pytest Repo Structure."""
 
-import pytest_repo_structure.plugin  # noqa: F401
 from pytest_repo_structure.plugin import acceptance_tests_folder
 from pytest_repo_structure.plugin import config_folder
 from pytest_repo_structure.plugin import data_folder

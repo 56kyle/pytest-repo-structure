@@ -3,7 +3,7 @@ from pathlib import Path
 from tests.constants import CUSTOM_HOOK_TEST_DEFAULT_VALUE
 
 
-pytest_plugins: list[str] = ["pytest_repo_structure.plugin"]
+pytest_plugins: list[str] = ["pytest-repo-structure"]
 
 
 def pytest_repository_root() -> Path:
